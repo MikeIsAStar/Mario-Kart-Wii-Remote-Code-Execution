@@ -17,6 +17,12 @@
 #======================================#
 
 #======================================#
+#         Assembler Directives         #
+#======================================#
+.set packetSize, packetEnd - packetStart
+.set payloadSize, payloadEnd - payloadStart
+
+#======================================#
 #             Text Section             #
 #======================================#
 .section ".text"
@@ -36,8 +42,8 @@ _start:
 packetStart:
     .long     0x4D696B65
     .long     0x00000000
-    .byte     0x28
-    .byte     payloadEnd - payloadStart
+    .byte     payloadStart - packetStart
+    .byte     payloadSize
     .byte     0x00
     .byte     0x00
     .byte     0x00
@@ -54,11 +60,11 @@ payloadEnd:
 packetEnd:
 
     lis       12, 0x80005F34@ha
-    li        5, packetEnd - packetStart
+    li        5, packetSize
     mflr      4
     ori       12, 12, 0x80005F34@l
     stw       5, 8(3)
     mtctr     12
     lwz       3, 0(3)
     bctrl
-    li        4, packetEnd - packetStart
+    li        4, packetSize
