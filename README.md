@@ -8,9 +8,9 @@ Injects arbitrary code into a client's game.
 ## Building
 ```
 mkdir out
-powerpc-eabi-as -mgekko -mregnames ./source/mario_kart_wii_remote_code_execution.S -o ./out/mario_kart_wii_remote_code_execution.o
-powerpc-eabi-ld -Ttext 0x80000000 ./out/mario_kart_wii_remote_code_execution.o
-powerpc-eabi-objcopy -O binary ./out/mario_kart_wii_remote_code_execution.o ./out/mario_kart_wii_remote_code_execution.bin
+/opt/devkitpro/powerpc-eabi-as -mgekko -mregnames ./source/mario_kart_wii_remote_code_execution.S -o ./out/mario_kart_wii_remote_code_execution.o
+/opt/devkitpro/powerpc-eabi-ld -Ttext 0x80000000 ./out/mario_kart_wii_remote_code_execution.o
+/opt/devkitpro/powerpc-eabi-objcopy -O binary ./out/mario_kart_wii_remote_code_execution.o ./out/mario_kart_wii_remote_code_execution.bin
 ```
 
 ## Usage
